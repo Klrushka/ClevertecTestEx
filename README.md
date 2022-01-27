@@ -38,7 +38,7 @@ in browser enter url
 `http://localhost:8080/ClevertecTestEx-1.0-SNAPSHOT/bill?args=1-92 0-3 2-4 2-3 2-4 2-5 0-4 1-4 card-1`
 — data from code
 
-`http://localhost:8080/ClevertecTestEx-1.0-SNAPSHOT/bill?args=1-1 0-3 2-5%20card-1 products.csv cards.csv`
+`http://localhost:8080/ClevertecTestEx-1.0-SNAPSHOT/bill?args=1-1 0-3 2-5 card-1 products.csv cards.csv`
 — data from files
 
 
