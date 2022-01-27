@@ -51,7 +51,8 @@ src.main.java.service.impl.BillToPdfImpl
  PdfWriter.getInstance(document, new FileOutputStream("bill.pdf"));
 ```
 
-##Example of bill:
+## Example of bill:
+
 In console:
 
 ![img.png](img.png) 
