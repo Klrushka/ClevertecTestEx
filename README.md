@@ -20,7 +20,7 @@ mvn clean package assembly:single
 java -jar .\target\ClevertecTestEx-1.0-SNAPSHOT-jar-with-dependencies.jar 1-999 0-3 2-4 2-3 2-4 2-5 0-4 1-4 card-2
 ```
 
-###Startup web application 
+### Startup web application 
 To startup web application we need move files: `config.propeties`, `cards.csv`, `products.csv`
 to tomcat bin directory (Example: apache-tomcat-9.0.54\bin\).
 
