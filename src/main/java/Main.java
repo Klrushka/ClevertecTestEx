@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-
         InputDataHandler dataHandler = new InputDataHandlerImpl();
 
         Data.init(dataHandler.getFile(args));
