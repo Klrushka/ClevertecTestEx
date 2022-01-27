@@ -24,8 +24,10 @@ public class Main {
 
         BillCreator billCreator = new BillCreatorImpl();
 
-        billCreator.printBill(new Bill(dataHandler.getCard(args), products));
+        Bill bill = new Bill(dataHandler.getCard(args), products);
 
-        billToPdf.createPdf(new Bill(dataHandler.getCard(args),products));
+        billCreator.printBill(bill);
+
+        billToPdf.createPdf(bill);
     }
 }
