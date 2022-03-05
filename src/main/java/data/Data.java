@@ -45,7 +45,7 @@ public class Data {
 
             reader.close();
 
-            reader = new CSVReader(new FileReader("src/main/    resources/" + str[1]));
+            reader = new CSVReader(new FileReader("src/main/resources/" + str[1]));
 
             rawData = reader.readAll();
 
