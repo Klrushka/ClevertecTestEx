@@ -14,20 +14,25 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        InputDataHandler dataHandler = new InputDataHandlerImpl();
+        if (args.length == 0){
+            System.out.println("Invalid arguments");
+        } else {
 
-        Data.init(dataHandler.getFile(args));
+            InputDataHandler dataHandler = new InputDataHandlerImpl();
 
-        BillToPdf billToPdf = new BillToPdfImpl();
+            Data.init(dataHandler.getFile(args));
 
-        ArrayList<Product> products = dataHandler.getProducts(args);
+            BillToPdf billToPdf = new BillToPdfImpl();
 
-        BillCreator billCreator = new BillCreatorImpl();
+            ArrayList<Product> products = dataHandler.getProducts(args);
 
-        Bill bill = new Bill(dataHandler.getCard(args), products);
+            BillCreator billCreator = new BillCreatorImpl();
 
-        billCreator.printBill(bill);
+            Bill bill = new Bill(dataHandler.getCard(args), products);
 
-        billToPdf.createPdf(bill);
+            billCreator.printBill(bill);
+
+            billToPdf.createPdf(bill);
+        }
     }
 }

@@ -54,8 +54,8 @@ src.main.java.service.impl.BillToPdfImpl
 ##Example of bill:
 In console:
 
-![img.png](img.png) 
+![img.png](img/img.png) 
 
 In pdf
 
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)

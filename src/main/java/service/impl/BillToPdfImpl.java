@@ -1,5 +1,6 @@
 package service.impl;
 
+
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -24,7 +25,7 @@ public class BillToPdfImpl implements BillToPdf {
 
         try {
             // to war change to ../webapps/ClevertecTestEx-1.0-SNAPSHOT/bill.pdf
-            PdfWriter.getInstance(document, new FileOutputStream("bill.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("bills/bill.pdf"));
 
             document.open();
 

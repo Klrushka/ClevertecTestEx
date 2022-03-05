@@ -79,7 +79,7 @@ public class Bill {
 
 
         try {
-            FileReader reader = new FileReader("config.properties");
+            FileReader reader = new FileReader("src/main/resources/config.properties");
             properties.load(reader);
         } catch (Exception e) {
             e.printStackTrace();

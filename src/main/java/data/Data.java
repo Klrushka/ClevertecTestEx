@@ -1,6 +1,7 @@
 package data;
 
-import au.com.bytecode.opencsv.CSVReader;
+
+import com.opencsv.CSVReader;
 import models.DiscountCard;
 import models.Product;
 
@@ -33,7 +34,7 @@ public class Data {
     public static void initFromFile(String[] str) {
 
         try {
-            CSVReader reader = new CSVReader(new FileReader(str[0]), ',');
+            CSVReader reader = new CSVReader(new FileReader("src/main/resources/" + str[0]));
 
             List<String[]> rawData = reader.readAll();
 
@@ -44,7 +45,7 @@ public class Data {
 
             reader.close();
 
-            reader = new CSVReader(new FileReader(str[1]), ',');
+            reader = new CSVReader(new FileReader("src/main/    resources/" + str[1]));
 
             rawData = reader.readAll();
 
