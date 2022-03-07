@@ -7,6 +7,5 @@
 
 /build/
 
-bills/*
-
-buildSrc/.gradle/
+/buildSrc/.gradle/
+/buildSrc/.gradle/build/
