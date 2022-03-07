@@ -14,7 +14,7 @@ import java.net.URL;
 /**
  * Download file by url
  */
-public class DownloadPDFBill extends DefaultTask {
+public class DownloadFileByURL extends DefaultTask {
 
     @Input
     String srcUrl;

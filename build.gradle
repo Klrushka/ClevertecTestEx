@@ -5,7 +5,7 @@ import com.sun.tools.javac.Main
  */
 
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
     id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
@@ -21,6 +21,7 @@ repositories {
 dependencies {
     implementation group: 'com.opencsv', name: 'opencsv', version: '5.6'
     implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13'
+    implementation gradleApi()
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
 }
 
@@ -43,6 +44,14 @@ tasks.shadowJar {
     }
 }
 
- tasks.build{
-        finalizedBy("shadowJar");
- }
+tasks.build {
+    finalizedBy("shadowJar")
+}
+
+
+task downloadFile(type: DownloadFileByURL) {
+    group "Download by URL"
+    description "Download file by URL"
+    srcUrl = "https://github.com/Klrushka/ClevertecTestEx/raw/gradle-task/bill.pdf"
+    target = new File("bills/downloaded/DownloadedBill.pdf")
+}
