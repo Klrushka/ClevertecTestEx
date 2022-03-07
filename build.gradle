@@ -52,6 +52,6 @@ tasks.build {
 task downloadFile(type: DownloadFileByURL) {
     group "Download by URL"
     description "Download file by URL"
-    srcUrl = "https://github.com/Klrushka/ClevertecTestEx/raw/gradle-task/bill.pdf"
+    srcUrl = "https://github.com/Klrushka/ClevertecTestEx/raw/gradle-task/bills/bill.pdf"
     target = new File("bills/downloaded/DownloadedBill.pdf")
 }
