@@ -10,9 +10,6 @@ import java.io.FileOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/*
-    Логику писал и в таске, и в плагине намеренно, что б было видно и так и так
- */
 
 public class DownloadFileByURLPlugin implements Plugin<Project> {
 
