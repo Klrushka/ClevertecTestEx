@@ -1,13 +1,13 @@
-package servlets;
+package ru.clevertec.servlets;
 
 
-import data.Data;
-import models.Bill;
-import models.Product;
-import service.impl.BillToPdfImpl;
-import service.impl.InputDataHandlerImpl;
-import service.interfaces.BillToPdf;
-import service.interfaces.InputDataHandler;
+import ru.clevertec.data.Data;
+import ru.clevertec.models.Bill;
+import ru.clevertec.models.Product;
+import ru.clevertec.service.impl.BillToPdfImpl;
+import ru.clevertec.service.impl.InputDataHandlerImpl;
+import ru.clevertec.service.interfaces.BillToPdf;
+import ru.clevertec.service.interfaces.InputDataHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

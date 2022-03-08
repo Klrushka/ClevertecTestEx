@@ -1,8 +1,8 @@
-package service.impl;
+package ru.clevertec.service.impl;
 
-import models.Bill;
-import models.DiscountCard;
-import models.Product;
+import ru.clevertec.models.Bill;
+import ru.clevertec.models.DiscountCard;
+import ru.clevertec.models.Product;
 
 import java.util.ArrayList;
 

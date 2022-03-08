@@ -1,9 +1,9 @@
-package service.impl;
+package ru.clevertec.service.impl;
 
-import data.Data;
-import models.DiscountCard;
-import models.Product;
-import service.interfaces.InputDataHandler;
+import ru.clevertec.data.Data;
+import ru.clevertec.models.DiscountCard;
+import ru.clevertec.models.Product;
+import ru.clevertec.service.interfaces.InputDataHandler;
 
 import java.util.ArrayList;
 import java.util.Collections;

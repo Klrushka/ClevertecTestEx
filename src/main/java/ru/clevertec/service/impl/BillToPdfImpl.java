@@ -1,18 +1,18 @@
-package service.impl;
+package ru.clevertec.service.impl;
 
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import models.Bill;
-import models.Product;
-import service.interfaces.BillToPdf;
+import ru.clevertec.models.Bill;
+import ru.clevertec.models.Product;
+import ru.clevertec.service.interfaces.BillToPdf;
 
 
 import java.io.FileOutputStream;
 
-import static service.impl.BillCalculations.*;
+import static ru.clevertec.service.impl.BillCalculations.*;
 
 
 public class BillToPdfImpl implements BillToPdf {

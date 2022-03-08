@@ -1,7 +1,7 @@
-package models;
+package ru.clevertec.models;
 
 
-import data.Data;
+import ru.clevertec.data.Data;
 
 public class Product {
     private int id;

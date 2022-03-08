@@ -1,7 +1,7 @@
-package service.interfaces;
+package ru.clevertec.service.interfaces;
 
-import models.DiscountCard;
-import models.Product;
+import ru.clevertec.models.DiscountCard;
+import ru.clevertec.models.Product;
 
 import java.util.ArrayList;
 

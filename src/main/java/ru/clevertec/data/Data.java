@@ -1,9 +1,9 @@
-package data;
+package ru.clevertec.data;
 
 
 import com.opencsv.CSVReader;
-import models.DiscountCard;
-import models.Product;
+import ru.clevertec.models.DiscountCard;
+import ru.clevertec.models.Product;
 
 import java.io.FileReader;
 import java.util.LinkedList;

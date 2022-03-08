@@ -1,10 +1,10 @@
-package service.impl;
+package ru.clevertec.service.impl;
 
-import models.Bill;
-import models.Product;
-import service.interfaces.BillCreator;
+import ru.clevertec.models.Bill;
+import ru.clevertec.models.Product;
+import ru.clevertec.service.interfaces.BillCreator;
 
-import static service.impl.BillCalculations.*;
+import static ru.clevertec.service.impl.BillCalculations.*;
 
 public class BillCreatorImpl implements BillCreator {
 

@@ -1,4 +1,4 @@
-package models;
+package ru.clevertec.models;
 
 import java.io.FileReader;
 import java.util.ArrayList;

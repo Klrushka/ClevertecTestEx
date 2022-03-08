@@ -1,3 +1,5 @@
+package ru.clevertec.plugins;
+
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 
@@ -23,22 +25,20 @@ public class DownloadFileByURLPlugin implements Plugin<Project> {
                         URL url = new URL(srcUrl);
                         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-                        BufferedInputStream bufferedInputStream = new BufferedInputStream(connection.getInputStream());
-                        FileOutputStream fileOutputStream = new FileOutputStream(target);
-                        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream, 1024);
+                        try (BufferedInputStream bufferedInputStream = new BufferedInputStream(connection.getInputStream());
+                             FileOutputStream fileOutputStream = new FileOutputStream(target);
+                             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream, 1024)) {
 
-                        byte[] buffer = new byte[1024];
-                        int read = 0;
 
-                        while ((read = bufferedInputStream.read(buffer, 0, 1024)) >= 0) {
-                            bufferedOutputStream.write(buffer, 0, read);
+                            byte[] buffer = new byte[1024];
+                            int read = 0;
+
+                            while ((read = bufferedInputStream.read(buffer, 0, 1024)) >= 0) {
+                                bufferedOutputStream.write(buffer, 0, read);
+                            }
+
+                            System.out.println("Complete");
                         }
-
-                        bufferedInputStream.close();
-                        bufferedOutputStream.close();
-                        fileOutputStream.close();
-
-                        System.out.println("Complete");
 
 
                     } catch (Exception e) {
@@ -47,7 +47,6 @@ public class DownloadFileByURLPlugin implements Plugin<Project> {
 
                     project.getTasks().getAt("downloadFilePlugin").setDescription("Download file by URL");
                     project.getTasks().getAt("downloadFilePlugin").setGroup("Download by URL");
-
                 }
         );
 
