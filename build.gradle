@@ -42,7 +42,7 @@ publishing {
 
 tasks.shadowJar {
     manifest {
-        attributes 'Main-Class': 'Main'
+        attributes 'Main-Class': 'ru.clevertec.Main'
     }
 }
 

@@ -1,3 +1,5 @@
+package ru.clevertec;
+
 import ru.clevertec.data.Data;
 import ru.clevertec.models.Bill;
 import ru.clevertec.models.Product;
