@@ -2,6 +2,8 @@ package models;
 
 
 import data.Data;
+import service.impl.DataValidatorImp;
+import service.interfaces.DataValidator;
 
 public class Product {
     private int id;
@@ -19,7 +21,14 @@ public class Product {
 
     public Product(String[] idQnt) {
         this(Data.getProduct(Integer.parseInt(idQnt[0])));
-        this.quantity = Integer.parseInt(idQnt[1]);
+
+        DataValidator validator = new DataValidatorImp();
+
+        if (validator.isQuantityValid(idQnt[0])){
+            this.quantity = Integer.parseInt(idQnt[1]);
+        } else{
+            System.out.println("Invalid quantity!");
+        }
     }
 
     private Product(Product product) {
