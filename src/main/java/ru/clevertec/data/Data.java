@@ -35,6 +35,8 @@ public class Data {
 
     public static void initFromFile(String[] str) {
 
+        boolean exitFlag = false;
+
         try {
             CSVReader reader = new CSVReader(new FileReader("src/main/resources/" + str[0]));
 
@@ -43,16 +45,12 @@ public class Data {
             List<String[]> rawData = reader.readAll();
 
             for (String[] fields : rawData) {
-
-                if (validator.isIdValid(fields[0]) &&
-                        validator.isNameValid(fields[1]) &&
-                        validator.isPriceValid(fields[2])) {
+                if (validator.isValidProduct(fields)) {
                     PRODUCTS.add(new Product(Integer.parseInt(fields[0]), fields[1], Float.parseFloat(fields[2]),
                             Boolean.parseBoolean(fields[3])));
                 } else {
-                    System.out.println("Invalid data check \"InvalidData.txt\" file");
+                    exitFlag = true;
                 }
-
 
             }
 
@@ -73,6 +71,12 @@ public class Data {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        if (exitFlag) {
+            System.out.println("Invalid data check \"InvalidData.txt\" file");
+            System.exit(0);
+        }
+
     }
 
     public static void init(String[] str) {

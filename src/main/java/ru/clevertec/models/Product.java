@@ -24,10 +24,11 @@ public class Product {
 
         DataValidator validator = new DataValidatorImp();
 
-        if (validator.isQuantityValid(idQnt[0])){
+        if (validator.isQuantityValid(idQnt[1])){
             this.quantity = Integer.parseInt(idQnt[1]);
-        } else{
-            System.out.println("Invalid quantity!");
+        } else {
+            System.out.println("Invalid data check \"InvalidData.txt\" file");
+            System.exit(0);
         }
     }
 

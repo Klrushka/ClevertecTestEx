@@ -2,15 +2,22 @@ package ru.clevertec.service.impl;
 
 import ru.clevertec.service.interfaces.DataValidator;
 
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Properties;
 
 public class DataValidatorImp implements DataValidator {
 
     @Override
     public void addToInvalidData(String string) {
-        // When merge with gradle need to change path!
-        try (FileWriter fileWriter = new FileWriter("src/main/resources/InvalidData.txt")){
-            fileWriter.write(string + "\n");
+
+        Properties properties = new Properties();
+
+        try (FileReader reader = new FileReader("src/main/resources/config.properties")){
+            properties.load(reader);
+            try( FileWriter fileWriter = new FileWriter(properties.getProperty("invalidData"),true)){
+                fileWriter.write(string + "\n");
+            }
         } catch (Exception e){
             System.out.println(e);
         }
@@ -23,7 +30,7 @@ public class DataValidatorImp implements DataValidator {
         if (string.matches(regex)) {
             return true;
         } else {
-            addToInvalidData(string);
+            addToInvalidData("id: " +  string);
             return false;
         }
     }
@@ -34,7 +41,7 @@ public class DataValidatorImp implements DataValidator {
         if (string.matches(regex)) {
             return true;
         } else {
-            addToInvalidData(string);
+            addToInvalidData("name: " + string);
             return false;
         }
     }
@@ -45,7 +52,7 @@ public class DataValidatorImp implements DataValidator {
         if (string.matches(regex)) {
             return true;
         } else {
-            addToInvalidData(string);
+            addToInvalidData("price: " + string);
             return false;
         }
     }
@@ -56,9 +63,18 @@ public class DataValidatorImp implements DataValidator {
         if (string.matches(regex)) {
             return true;
         } else {
-            addToInvalidData(string);
+            addToInvalidData("quantity: " + string);
             return false;
         }
 
+    }
+
+    @Override
+    public boolean isValidProduct(String[] strings) {
+        boolean id = isIdValid(strings[0]);
+        boolean name = isNameValid(strings[1]);
+        boolean price = isPriceValid(strings[2]);
+
+        return (id && name && price);
     }
 }
