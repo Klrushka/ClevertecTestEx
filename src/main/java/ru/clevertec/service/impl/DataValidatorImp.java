@@ -48,7 +48,7 @@ public class DataValidatorImp implements DataValidator {
 
     @Override
     public boolean isPriceValid(String string) {
-        String regex = "^((([1-9])|([1-9]{1,2}))\\.\\d{2})|100\\.00";
+        String regex = "^((([1-9])|([1-9]{1,2})|([1-9]0))\\.\\d{2})|100\\.00";
         if (string.matches(regex)) {
             return true;
         } else {
