@@ -5,7 +5,6 @@ import ru.clevertec.service.interfaces.ÑustomList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -32,43 +31,68 @@ public class Main {
 
         arrayList0.addAll(dataList);
 
-        System.out.println("After \"addAll()\"");
+        System.out.println("Using \"addAll()\"");
         printInfo(arrayList0);
 
 
-        System.out.println("After \"add(20)\"");
+        System.out.println("Using \"add(20)\"");
         arrayList0.add(20);
         printInfo(arrayList0);
 
-        System.out.println("After \"remove(5)\"");
+        System.out.println("Using \"remove(5)\"");
         arrayList0.remove(5);
         printInfo(arrayList0);
 
-        System.out.println("After \"set(5,5)\"");
+        System.out.println("Using \"set(5,5)\"");
         System.out.println("old element: " + arrayList0.set(5, 5));
         printInfo(arrayList0);
 
-        System.out.println("After \"find(2)\"");
+        System.out.println("Using \"find(2)\"");
         System.out.println(arrayList0.find(2));
 
-        System.out.println("After \"get(6)\"");
+        System.out.println("Using \"get(6)\"");
         System.out.println(arrayList0.get(6));
 
-        System.out.println("After \"clear()\"");
+        System.out.println("Using \"clear()\"");
         arrayList0.clear();
         printInfo(arrayList0);
 
-        System.out.println("After \"trim()\"");
+        System.out.println("Using \"trim()\"");
         arrayList0.trim();
         printInfo(arrayList0);
 
-        System.out.println("After \"setMaxSize(5)\" and \"addAll(dataList)\"");
+        System.out.println("Using \"setMaxSize(5)\" and \"addAll(dataList)\"");
         arrayList0.setMaxSize(5);
         arrayList0.addAll(dataList);
         printInfo(arrayList0);
 
-        System.out.println("After \"toArray()\"");
+        System.out.println("Using \"toArray()\"");
         System.out.println(Arrays.toString(arrayList0.toArray()));
+
+        System.out.println("\n\nTest list Iterator");
+        CustomIterator<Integer> iterator = arrayList0.getIterator();
+
+        System.out.println("Using methods \"hasNext()\" and \"next()\"");
+        while (iterator.hasNext()){
+            System.out.print(iterator.next() + " ");
+        }
+
+        arrayList0.setMaxSize(0);
+
+        System.out.println("\nUsing methods \"next() x 2\" and \"remove()\" and \"setIteratorToStart()\"");
+        iterator.setIteratorToStart();
+        iterator.next();
+        iterator.next();
+        iterator.remove();
+        printInfo(arrayList0);
+
+        System.out.println("\nUsing methods \"addBefore(10)\"");
+        iterator.addBefore(10);
+        printInfo(arrayList0);
+
+        System.out.println("\nUsing methods \"addAfter(10)\"");
+        iterator.addAfter(10);
+        printInfo(arrayList0);
 
 
     }

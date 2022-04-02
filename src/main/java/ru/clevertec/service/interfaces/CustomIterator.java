@@ -7,7 +7,9 @@ public interface CustomIterator<T> {
 
     T remove();
 
-    void addBefore();
+    void addBefore(T element);
 
-    void addAfter();
+    void addAfter(T element);
+
+    void setIteratorToStart();
 }

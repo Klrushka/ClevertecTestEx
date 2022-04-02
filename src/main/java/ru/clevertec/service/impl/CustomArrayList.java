@@ -44,6 +44,7 @@ public class CustomArrayList<T> implements ÑustomList<T> {
             throw new IllegalArgumentException();
         }
         this.maxSize = maxSize;
+        size = 5;
     }
 
     @Override
@@ -80,7 +81,7 @@ public class CustomArrayList<T> implements ÑustomList<T> {
     public T remove(int n) {
         checkIndex(n);
         T oldElement = data[n];
-        for (int i = n; i < pointer; i++) {
+        for (int i = n; i < pointer -1; i++) {
             data[i] = data[i + 1];
         }
         data[--pointer] = null;
@@ -166,6 +167,7 @@ public class CustomArrayList<T> implements ÑustomList<T> {
 
         @Override
         public T next() {
+            checkIndex(cursor);
             return data[cursor++];
         }
 
@@ -177,19 +179,29 @@ public class CustomArrayList<T> implements ÑustomList<T> {
         @Override
         public T remove() {
             T oldElement = data[cursor];
-            CustomArrayList.this.remove(--cursor);
+            CustomArrayList.this.remove(cursor--);
             return oldElement;
         }
 
         @Override
-        public void addBefore() {
-
+        public void addBefore(T element) {
+            if (pointer + 1 > size) add(null);
+            T[] tempArray = Arrays.copyOf(data, ++pointer);
+            data[cursor] = element;
+            System.arraycopy(tempArray, cursor, data, ++cursor, pointer - cursor);
         }
 
         @Override
-        public void addAfter() {
+        public void addAfter(T element) {
+            if (pointer + 1 > size) add(null);
+            T[] tempArray = Arrays.copyOf(data, size);
+            data[++cursor] = element;
+            System.arraycopy(tempArray, cursor, data, cursor + 1, pointer - cursor);
+        }
 
+        @Override
+        public void setIteratorToStart() {
+            cursor = 0;
         }
     }
 }
-
