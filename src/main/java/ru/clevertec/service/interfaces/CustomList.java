@@ -2,22 +2,22 @@ package ru.clevertec.service.interfaces;
 
 import java.util.Collection;
 
-public interface ÑustomList<T> {
+public interface CustomList<T> {
     CustomIterator getIterator();
 
     void setMaxSize(int n);
 
-    void add(T element);
+    void add(T item);
 
     void addAll(Collection<T> collection);
 
-    T set(int n, T element);
+    T set(int n, T item);
 
     T remove(int n);
 
     void clear();
 
-    int find(T element);
+    int find(T item);
 
     T get(int n);
 

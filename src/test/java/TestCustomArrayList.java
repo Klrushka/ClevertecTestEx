@@ -1,13 +1,13 @@
 import org.gradle.internal.impldep.org.junit.Test;
 import ru.clevertec.service.impl.CustomArrayList;
 import ru.clevertec.service.interfaces.CustomIterator;
-import ru.clevertec.service.interfaces.ÑustomList;
+import ru.clevertec.service.interfaces.CustomList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+public class TestCustomArrayList {
     @Test
     public static void main(String[] args) {
         Integer[] data = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -97,7 +97,7 @@ public class Main {
 
     }
 
-    private static <T> void printInfo(CustomArrayList<T> arrayList) {
+    private static <T> void printInfo(CustomList<T> arrayList) {
         System.out.println("List size: " + arrayList.size());
         System.out.println(arrayList);
         System.out.println();

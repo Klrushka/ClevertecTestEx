@@ -1,13 +1,13 @@
 package ru.clevertec.service.impl;
 
 import ru.clevertec.service.interfaces.CustomIterator;
-import ru.clevertec.service.interfaces.ÑustomList;
+import ru.clevertec.service.interfaces.CustomList;
 
 
 import java.util.Arrays;
 import java.util.Collection;
 
-public class CustomArrayList<T> implements ÑustomList<T> {
+public class CustomArrayList<T> implements CustomList<T> {
     private T[] data;
     private int size;
     private int maxSize = 0;
