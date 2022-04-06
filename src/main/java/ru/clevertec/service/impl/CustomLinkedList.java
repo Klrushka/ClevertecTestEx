@@ -10,11 +10,20 @@ public class CustomLinkedList<T> implements CustomList<T> {
     private Node<T> firstNode;
     private Node<T> lastNode;
     private int size = 0;
+    private int maxSize = 0;
 
     public CustomLinkedList() {
         firstNode = new Node<>(null, null, lastNode);
         lastNode = new Node<>(null, firstNode, null);
         firstNode.next = lastNode;
+    }
+
+    public CustomLinkedList(Collection<T> collection) {
+        this();
+        T[] collectionItems = (T[]) collection.toArray();
+        for (int i = 0; i < collection.size(); i++) {
+            add(collectionItems[i]);
+        }
     }
 
     private class Node<T> {
@@ -36,11 +45,12 @@ public class CustomLinkedList<T> implements CustomList<T> {
 
     @Override
     public void setMaxSize(int n) {
-
+        maxSize = n;
     }
 
     @Override
     public void add(T item) {
+        if (maxSize != 0 && size + 1 > maxSize) return;
         Node<T> prev = lastNode;
         prev.item = item;
         lastNode = new Node<>(null, prev, null);
@@ -50,15 +60,22 @@ public class CustomLinkedList<T> implements CustomList<T> {
 
     @Override
     public void addAll(Collection<T> collection) {
+        int sizeArray;
+        if (maxSize != 0) {
+            sizeArray = maxSize;
+        } else {
+            sizeArray = collection.size();
+        }
         T[] tempCollection = (T[]) collection.toArray();
-        for (int i = 0; i < collection.size(); i++) {
+        for (int i = 0; i < sizeArray; i++) {
             add(tempCollection[i]);
         }
     }
 
     @Override
     public T set(int n, T element) {
-       Node<T> node = getNode(n);
+        checkIndex(n);
+        Node<T> node = getNode(n);
 
         T oldElement = node.item;
         node.item = element;
@@ -68,6 +85,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
 
     @Override
     public T remove(int n) {
+        checkIndex(n);
         Node<T> node = getNode(n);
         node.prev.next = node.next;
         node.next.prev = node.prev;
@@ -87,7 +105,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
     public int find(T element) {
         Node<T> result = firstNode.next;
         for (int i = 0; i < size; i++) {
-            if (result.item.equals(element)){
+            if (result.item.equals(element)) {
                 return i;
             }
             result = result.next;
@@ -108,7 +126,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
     public Object[] toArray() {
         Node<T> node = firstNode.next;
         Object[] data = new Object[size];
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             data[i] = node.item;
             node = node.next;
         }
@@ -123,11 +141,12 @@ public class CustomLinkedList<T> implements CustomList<T> {
     @Override
     public void trim() {
         Node<T> node = firstNode.next;
-        for (int i = 0; i < size; i++){
-            if (node.item == null){
+        for (int i = 0; i < size; i++) {
+            if (node.item == null) {
                 remove(i);
                 i--;
             }
+            node = node.next;
         }
     }
 
@@ -151,7 +170,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
         return builder.toString();
     }
 
-    private Node<T> getNode(int n){
+    private Node<T> getNode(int n) {
         Node<T> node = firstNode.next;
 
         for (int i = 0; i < n; i++) {
@@ -162,7 +181,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
     }
 
 
-    private class Itr implements CustomIterator<T>{
+    private class Itr implements CustomIterator<T> {
 
         private int cursor = 0;
 
@@ -189,6 +208,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
             node.prev.next = newNode;
             node.prev = newNode;
             size++;
+            cursor++;
         }
 
         @Override
@@ -203,6 +223,12 @@ public class CustomLinkedList<T> implements CustomList<T> {
         @Override
         public void setIteratorToStart() {
             cursor = 0;
+        }
+    }
+
+    private void checkIndex(int n) {
+        if ((maxSize != 0 && (n > maxSize || n > size) || n > size)) {
+            throw new IndexOutOfBoundsException();
         }
     }
 }
