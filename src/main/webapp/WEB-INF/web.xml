@@ -6,7 +6,7 @@
     <display-name>A Simple Web Application</display-name>
     <servlet>
         <servlet-name>billServlet</servlet-name>
-        <servlet-class>servlets.BillServlet</servlet-class>
+        <servlet-class>ru.clevertec.servlets.BillServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>billServlet</servlet-name>

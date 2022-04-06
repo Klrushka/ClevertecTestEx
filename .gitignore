@@ -2,3 +2,13 @@
 /target/
 
 /.idea/
+
+/.gradle/
+
+/build/
+
+/buildSrc/build/
+
+/buildSrc/.gradle/
+
+bills/downloaded/*
